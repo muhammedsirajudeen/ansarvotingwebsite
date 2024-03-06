@@ -24,6 +24,17 @@ model Vote {
   username String
   votename String
   description String
-
+  voteoptions String
+  status Boolean @default(true)
 }
+
+model Voted {
+
+  id String @id @default(uuid())
+  voteid String
+  adhar String
+  voteto String
+  username String
+}
+
 

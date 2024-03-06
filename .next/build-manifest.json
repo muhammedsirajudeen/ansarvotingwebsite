@@ -22,6 +22,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/mypolls": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/mypolls.js"
+    ],
     "/poll": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

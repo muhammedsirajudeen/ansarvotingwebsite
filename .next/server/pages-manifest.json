@@ -3,5 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/poll": "pages/poll.js",
-  "/home": "pages/home.js"
+  "/mypolls": "pages/mypolls.js",
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js"
 }
