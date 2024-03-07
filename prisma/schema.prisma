@@ -35,6 +35,7 @@ model Voted {
   adhar String
   voteto String
   username String
+  validity Boolean @default(false)
 }
 
 

@@ -2,7 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/home": "pages/home.js",
+  "/createvote": "pages/createvote.js",
   "/poll": "pages/poll.js",
-  "/mypolls": "pages/mypolls.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js"
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
+  "/api/votehandler/vote": "pages/api/votehandler/vote.js",
+  "/": "pages/index.js",
+  "/api/votehandler/poller": "pages/api/votehandler/poller.js",
+  "/api/votehandler/getvote": "pages/api/votehandler/getvote.js"
 }

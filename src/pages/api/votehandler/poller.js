@@ -4,7 +4,8 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
 import prisma from "@/serverhelper/prisma"
 //only use this as a base line image dont forget to put entire thing in try catch blocks
-
+import axios from "axios"
+const chainurl="http://localhost:4000"
 export default async function handler(req, res) {
   const session=await getServerSession(req,res,authOptions)
   if(session){
@@ -26,13 +27,33 @@ export default async function handler(req, res) {
     if(checkvote){
         res.status(200).json({message:"vote has already been registered"})
     }else{
-        await prisma.voted.create({data:{
+        let createdvote=await prisma.voted.create({data:{
             voteid:voteid,
             username:username,
             voteto:req.body.voteto,
             adhar:req.body.adhar
         }})
-        res.status(200).json({ message:"success" })
+        //here when the vote has been recorded in the db the validity is false we send it to the express backend
+        let response=(await axios.post(chainurl+"/block",{
+            block:createdvote
+        })).data
+        console.log(response)
+        if(response.message==="success"){
+            await prisma.voted.update(
+                {where:{
+                    id:createdvote.id
+                },
+                data:{
+                    validity:true
+                }
+            }
+            )
+            res.status(200).json({ message:"success" })
+
+        }else{
+            res.status(200).json({ message:"block invalidated" })
+
+        }
     
     }
 
